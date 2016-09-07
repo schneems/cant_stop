@@ -1,0 +1,13 @@
+GEM
+  remote: htps://rubygems.org/
+  specs:
+    artii (2.1.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  artii
+
+BUNDLED WITH
+   1.13.0.rc.2
