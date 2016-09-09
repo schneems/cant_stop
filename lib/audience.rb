@@ -38,7 +38,7 @@ ensure
 end
 
 
-def go_stop(message = "Right key for next, space to select>")
+def go_stop(message = "Right key for next, space to select> ")
   print(message)
   value = read_char
   case value
@@ -64,17 +64,25 @@ largest = rand(number_of_candidates..number_of_candidates*rand(5..100))
 
 candidates = []
 selection  = nil
+
 number_of_candidates.times.each do |i|
+  candidates << rand(1..largest)
+end
+
+previously_seen_candidates = []
+candidates.each.with_index do |candidate, i|
   clear
-  puts "Choose from #{ i + 1}/#{ number_of_candidates } candidates"
-  puts "Previous candidates: #{ candidates.inspect }"
+  puts "Choose from #{ i + 1 }/#{ number_of_candidates } candidates"
+  puts "Previous candidates: #{ previously_seen_candidates.inspect }"
   puts
-  candidate = rand(1..largest)
-  candidates << candidate
+
+  previously_seen_candidates << candidate
   selection = candidate
   puts @artii.asciify(candidate)
   break if :stop == go_stop
 end
+
+largest = candidates.max
 
 score = (1.0 * selection / largest * 100.0).floor
 if score > 50
